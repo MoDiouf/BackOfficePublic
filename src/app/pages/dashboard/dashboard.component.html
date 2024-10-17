@@ -1,0 +1,69 @@
+
+    <nz-layout class="app-layout">
+        <nz-sider class="menu-sidebar" nzCollapsible nzWidth="256px" nzBreakpoint="md" [(nzCollapsed)]="isCollapsed"
+            [nzTrigger]="null">
+            <div class="sidebar-logo">
+                <a routerLink="/statistiques" (click)="onReports()">
+                    <img src="../../../assets/images/logo_drop_it.jpeg" alt="logo">
+                    <h1>Drop Back Office</h1>
+                </a>
+            </div>
+            <ul nz-menu nzTheme="dark" nzMode="inline" [nzInlineCollapsed]="isCollapsed">
+                <li nz-submenu nzOpen nzTitle="Utilisateurs" nzIcon="user">
+                    <ul>
+                        <li nz-menu-item nzMatchRouter>
+                            <a routerLink="/clients" (click)="onCustomers()">Clients</a>
+                        </li>
+                        <li nz-menu-item nzMatchRouter>
+                            <a routerLink="/Livreurs" (click)="onDeliveries()">Livreurs</a>
+                        </li>
+                    </ul>
+                </li>
+                <li nz-menu-item nzMatchRouter>
+                    <a routerLink="/commandes" (click)="onOrders()">
+                        <span nz-icon nzType="shopping-cart" nzTheme="outline"></span>
+                        <span>Commandes</span>
+                    </a>
+                </li>
+                <li nz-menu-item nzMatchRouter>
+                    <a routerLink="/reclamations" (click)="onReclamations()">
+                        <span nz-icon nzType="shopping-cart" nzTheme="outline"></span>
+                        <span>Reclamations</span></a>
+                </li>
+                <!--li nz-menu-item nzMatchRouter style="margin-top: 400px;">
+                    <a (click)="onLogout()">
+                        <span nz-icon nzType="logout" nzTheme="outline"></span>
+                        <span style="color: red;">Deconnexion</span></a>
+                </li-->
+            </ul>
+        </nz-sider>
+        <nz-layout>
+            <nz-header>
+                <div nz-row class="app-header" nzJustify="space-between">
+                    <div nz-col>
+                        <span class="header-trigger" (click)="isCollapsed = !isCollapsed">
+                            <span class="trigger" nz-icon [nzType]="isCollapsed ? 'menu-unfold' : 'menu-fold'"></span>
+                        </span>
+                    </div>
+                    <div nz-col>
+                        <ul nz-menu>
+                            <li nz-submenu nzIcon="logout">
+                                <ul>
+                                    <li nz-menu-item (click)="onLogout()" style="color: red;">
+                                        Déconnexion
+                                    </li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </nz-header>
+            <nz-content>
+                <div class="inner-content">
+                    
+                    <router-outlet></router-outlet>
+                </div>
+            </nz-content>
+        </nz-layout>
+    </nz-layout>
+

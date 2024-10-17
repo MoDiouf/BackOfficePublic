@@ -1,0 +1,162 @@
+
+<section class="min-vh-100 bg-image"
+  style="background-image: url('https://mdbcdn.b-cdn.net/img/Photos/new-templates/search-box/img4.webp'); background-size: cover; background-position: center;">
+    <div class="container py-5 h-100">
+      <div class="row d-flex justify-content-center align-items-center h-100">
+        <div class="col">
+          <div class="card card-registration my-4 custom-bg">
+            <div class="row g-0">
+              <div class="col-xl-6 d-none d-xl-block">
+                <img src="../../../../assets/images/Iainformatique2.jpg"
+                  alt="Sample photo" class="img-fluid"
+                  style="border-top-left-radius: .25rem; border-bottom-left-radius: .25rem;" />
+              </div>
+              <div class="col-xl-6">
+                <div class="card-body p-md-5 text-black">
+                  <h3 class="mb-5 text-uppercase">Formulaire d'inscription sur App</h3>
+                  <div class="row">
+                    <div class="col-md-6 mb-4">
+                      <div data-mdb-input-init class="form-outline">
+                        <input type="text" id="form3Example1m" class="form-control form-control-lg" placeholder="First name" [(ngModel)]="firstName" name="firstName" />
+                      </div>
+                    </div>
+                    <div class="col-md-6 mb-4">
+                      <div data-mdb-input-init class="form-outline">
+                        <input type="text" id="form3Example1n" class="form-control form-control-lg" placeholder="Last name" [(ngModel)]="lastName" name="lastName"/>
+                      </div>
+                    </div>
+                  </div>
+                  <div data-mdb-input-init class="form-outline mb-4">
+                    <input type="text" id="form3Example8" class="form-control form-control-lg" placeholder="Adresse" [(ngModel)]="addresse" name="addresse" />
+                  </div>
+                  <div class="row">
+                    <div class="col-md-3 mb-3">
+                      <select class="form-control" data-mdb-select-init [(ngModel)]="genre" name="genre">
+                        <option value="1">Genre</option>
+                        <option value="Masculin">Masculin</option>
+                        <option value="Féminin">Féminin</option>
+                      </select>
+                    </div>
+                    <div class="col-md-3 mb-3">
+                      <select class="form-control" data-mdb-select-init [(ngModel)]="pays" name="pays" >
+                        <option value="1">Pays</option>
+                        <option value="Sénégal">Sénégal</option>
+                        <option value="Mali">Mali</option>
+                        <option value="Guinée">Guinée</option>
+                      </select>
+                    </div>
+                    <div class="col-md-3 mb-3">
+                      <select class="form-control" data-mdb-select-init [(ngModel)]="ville" name="ville">
+                        <option value="1">Ville</option>
+                        <option value="Dakar">Dakar</option>
+                        <option value="Bamako">Bamako</option>
+                        <option value="Conacry">Conacry</option>
+                      </select>
+                    </div>
+                    <div class="col-md-3 mb-3">
+                      <select class="form-control" data-mdb-select-init [(ngModel)]="poste" name="poste">
+                        <option value="1">Poste</option>
+                        <option value="Développeur">Développeur</option>
+                        <option value="Management">Management</option>
+                        <option value="Marketing">Marketing</option>
+                      </select>
+                    </div>
+                  </div>
+                  
+                  
+                  <div class="row">
+                    <div class="col-md-5 mb-4 pb-2">
+
+                      <div data-mdb-input-init class="form-outline form-white">
+                        <input type="text" id="form3Examplea7" class="form-control form-control-lg" placeholder="Code +" [(ngModel)]="codeNumber" name="codeNumber"/>
+                      </div>
+
+                    </div>
+                    <div class="col-md-7 mb-4 pb-2">
+                      <div data-mdb-input-init class="form-outline form-white">
+                        <input type="text" id="form3Examplea8" class="form-control form-control-lg" placeholder="Phone Number" [(ngModel)]="numberPhone" name="numberPhone"/>
+                      </div>
+
+                    </div>
+                  </div>
+                  <!-- <div data-mdb-input-init class="form-outline mb-4">
+                    <input type="text" id="form3Example9" class="form-control form-control-lg" placeholder="DOB" />
+                  </div> -->
+                  <div data-mdb-input-init class="form-outline mb-4">
+                    <input type="email" id="form3Example90" class="form-control form-control-lg" placeholder="Email" [(ngModel)]="email" name="email"/>
+                  </div>
+                  <div data-mdb-input-init class="form-outline mb-4">
+                    <input type="password" id="form3Example99" class="form-control form-control-lg" placeholder="password" [(ngModel)]="password" name="password"/>
+                  </div>
+                  <div data-mdb-input-init class="form-outline mb-4">
+                    <input type="password" id="form3Example97" class="form-control form-control-lg" placeholder="password confirme" [(ngModel)]="passwordConfirm" name="passwordConfirm" />
+                  </div>
+                  <!-- <div class="form-check d-flex justify-content-center mb-5">
+                    <input class="form-check-input me-2" type="checkbox" value="" id="form2Example3c" placeholder="  I agree all statements in Terms of service"/>
+                 
+                  </div> -->
+
+                  <div class="d-flex justify-content-center mx-4 mb-3 mb-lg-4">
+                    <button  type="button" data-mdb-button-init data-mdb-ripple-init class="btn btn-primary btn-customer-col" (click)="SubmitData()">Register</button>
+                  </div>
+
+                  <!-- <div class="d-flex justify-content-end pt-3">
+                    <button  type="button" data-mdb-button-init data-mdb-ripple-init class="btn btn-light btn-lg">Reset all</button>
+                    <button  type="button" data-mdb-button-init data-mdb-ripple-init class="btn btn-warning btn-lg ms-2">Submit form</button>
+                  </div> -->
+                </div>
+              </div>  
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </section>
+  <app-footer-page></app-footer-page>
+  <!-- <div class="mask d-flex align-items-center h-100 gradient-custom-3">
+    <div class="container h-100">
+      <div class="row d-flex justify-content-center align-items-center h-100">
+        <div class="col-12 col-md-9 col-lg-7 col-xl-6">
+          <div class="card w-100" style="border-radius: 15px;">
+            <div class="card-body ">
+              <h2 class="text-uppercase text-center mb-5">Create an account</h2>
+
+              <form>
+                <div data-mdb-input-init class="form-outline mb-4">
+                  <input type="text" id="form3Example1cg" class="form-control form-control-lg" placeholder="Your Name" />
+                </div>
+
+                <div data-mdb-input-init class="form-outline mb-4">
+                  <input type="email" id="form3Example3cg" class="form-control form-control-lg" placeholder="Your Email" />
+                </div>
+
+                <div data-mdb-input-init class="form-outline mb-4">
+                  <input type="password" id="form3Example4cg" class="form-control form-control-lg" placeholder="Password" />
+                </div>
+
+                <div data-mdb-input-init class="form-outline mb-4">
+                  <input type="password" id="form3Example4cdg" class="form-control form-control-lg" placeholder="Repeat your password"/>
+                </div>
+
+                <div class="form-check d-flex justify-content-left mb-3">
+                  <input class="form-check-input" type="checkbox" value="" id="form2Example3cg" />
+                  <label class="form-check-label" for="form2Example3g">
+                    I agree all statements in
+                  </label>
+                </div>
+
+                <div class="d-flex justify-content-center">
+                  <button type="button" class="btn btn-success btn-block btn-lg gradient-custom-4 text-body">Register</button>
+                </div>
+                <p class="text-center text-muted mt-2 mb-0">Have already an account? <a routerLink="/Connexion" class="fw-bold text-body"><u>Login here</u></a></p>
+              </form>
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div> -->
+ 
+<router-outlet></router-outlet>

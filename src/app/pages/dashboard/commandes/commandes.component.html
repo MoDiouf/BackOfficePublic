@@ -1,0 +1,125 @@
+<h2>
+    <span nz-icon nzType="arrow-right" nzTheme="outline"></span> Liste des commandes
+</h2>
+<nz-table #basicTable [nzData]="orders">
+    <thead>
+        <tr>
+            <th>Type colis</th>
+            <th>Client</th>
+            <th>Livreur</th>
+            <th>Adresse retrait</th>
+            <th>Adresse livraison</th>
+            <th>Description</th>
+            <th>Date</th>
+            <th>Prix</th>
+            <th>Statut</th>
+            <th>Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let data of basicTable.data">
+            <td>{{ data.type_colis }}</td>
+            <td>{{ data.id_client }}</td>
+            <td>{{ data.id_livreur }}</td>
+            <td>{{ data.adresse_retrait }}</td>
+            <td>{{ data.adresse_livraison }}</td>
+            <td>{{ data.description }}</td>
+            <td>{{ data.date_lancement| date:'dd/MM/yyyy HH:mm:ss' }}</td>
+            <td>{{ data.total }} Є</td>
+            <td *ngIf="data.statut=='En_cours'">En cours</td>
+            <td *ngIf="data.statut=='Prise_En_Charge'">Prise en charge</td>
+            <td *ngIf="data.statut=='Colis_Recu'">Recu</td>
+            <td *ngIf="data.statut=='Livrer'">Livrer</td>
+            <td>
+                <a (click)="showDetails(data)">
+                    <span>Details</span>
+                </a>
+            </td>
+        </tr>
+    </tbody>
+</nz-table>
+
+<nz-modal [(nzVisible)]="isVisible" nzTitle="Details commande" nzClosable="false">
+    <ng-container *nzModalContent>
+        <div nz-row nzJustify="center">
+            <div nz-col nzSpan="11"><span class="txtSt">Type colis</span></div>
+            <div nz-col nzSpan="11"><span class="txtSt">{{selectedOrder?.type_colis}}</span></div>
+        </div>
+        <div nz-row nzJustify="center">
+            <div nz-col nzSpan="11"><span class="txtSt">Description</span></div>
+            <div nz-col nzSpan="11"><span class="txtSt">{{selectedOrder?.description}}</span></div>
+        </div>
+        <div nz-row nzJustify="center">
+            <div nz-col nzSpan="11"><span class="txtSt">Prix</span></div>
+            <div nz-col nzSpan="11"><span class="txtSt">{{selectedOrder?.total}} </span></div>
+        </div>
+        <div nz-row nzJustify="center">
+            <div nz-col nzSpan="11"><span class="txtSt">Adresse retrait</span></div>
+            <div nz-col nzSpan="11"><span class="txtSt">{{selectedOrder?.adresse_retrait}}</span></div>
+        </div>
+        <div nz-row nzJustify="center">
+            <div nz-col nzSpan="11"><span class="txtSt">Adresse livraison</span></div>
+            <div nz-col nzSpan="11"><span class="txtSt">{{selectedOrder?.adresse_livraison}}</span></div>
+        </div>
+        <div nz-row nzJustify="center">
+            <div nz-col nzSpan="11"><span class="txtSt">Statut</span></div>
+            <div nz-col nzSpan="11">
+                <span class="txtSt" *ngIf="selectedOrder.statut == 'En_cours'">En cours</span>
+                <span class="txtSt" *ngIf="selectedOrder.statut == 'Prise_En_Charge'">Prise en charge</span>
+                <span class="txtSt" *ngIf="selectedOrder.statut == 'Colis_Recu'">Colis recu</span>
+                <span class="txtSt" *ngIf="selectedOrder.statut == 'Livrer'">Colis livre</span>
+            </div>
+        </div>
+        <nz-divider></nz-divider>
+        <div nz-row nzJustify="center">
+            <div nz-col nzSpan="11"><span class="txtSt">Client</span></div>
+            <div nz-col nzSpan="11"><span class="txtSt">{{customer?.nom}} {{customer?.prenom}}
+                    {{customer?.numero_telephone}}</span></div>
+        </div>
+        <nz-divider></nz-divider>
+        <div nz-row nzJustify="center">
+            <div nz-col nzSpan="11"><span class="txtSt">Livreur</span></div>
+            <div nz-col nzSpan="11"><span class="txtSt" *ngIf="delivery">{{delivery?.nom}} {{delivery?.prenom}}
+                    {{delivery?.numero_telephone}}</span>
+                <span class="txtSt" *ngIf="!delivery">Aucun livreur(annulation)</span>
+            </div>
+        </div>
+    </ng-container>
+
+    <ng-container *nzModalFooter>
+        <button nz-button nzType="primary" (click)="handleUpdate()">Update</button>
+        <button nz-button nzType="primary" (click)="handleOk()">Ok</button>
+    </ng-container>
+</nz-modal>
+
+<nz-modal [(nzVisible)]="isSecondVisible" nzTitle="Update commande" nzClosable="false">
+    <ng-container *nzModalContent>
+        <div nz-row nzJustify="center" class="input-container">
+            <div nz-col nzSpan="11"><span class="txtSt">Type colis</span></div>
+            <div nz-col nzSpan="11"><input type="text" placeholder={{selectedOrder?.type_colis}} disabled></div>
+        </div>
+        <div nz-row nzJustify="center"  class="input-container">
+            <div nz-col nzSpan="11"><span class="txtSt">Description</span></div>
+            <div nz-col nzSpan="11"><input type="text" placeholder={{selectedOrder?.description}} disabled></div>
+        </div>
+        <div nz-row nzJustify="center"  class="input-container">
+            <div nz-col nzSpan="11"><span class="txtSt">Prix</span></div>
+            <div nz-col nzSpan="11"><input type="text" placeholder={{selectedOrder?.total}} disabled></div>
+        </div>
+        <div nz-row nzJustify="center"  class="input-container">
+            <div nz-col nzSpan="11"><span class="txtSt">Id Livreur</span></div>
+            
+            <div nz-col nzSpan="11">
+                <select id="options" (change)="handleUpdateDelivery($event)">
+                    <option value="" disabled selected>Choisir un livreur</option>
+                    <option *ngFor="let NoTake of noTakes" [value]="NoTake">{{ NoTake }}</option>
+                </select>
+                
+            </div>
+            
+        </div>
+    </ng-container>
+    <ng-container *nzModalFooter>
+        <button nz-button nzType="primary" (click)="sendDeliverie()">Confirmer</button>
+    </ng-container>
+</nz-modal>

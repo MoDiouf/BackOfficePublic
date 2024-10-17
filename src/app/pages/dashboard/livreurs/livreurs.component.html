@@ -1,0 +1,143 @@
+<h2>
+  <span nz-icon nzType="arrow-right" nzTheme="outline"></span> Liste des
+  livreurs
+</h2>
+<nz-table #basicTable [nzData]="deliveries">
+  <thead>
+    <tr>
+      <th>Nom</th>
+      <th>Prenom</th>
+      <th>Adresse</th>
+      <th>E-mail</th>
+      <th>Telephone</th>
+      <th>Compte</th>
+      <th>Statut</th>
+      <th>Action</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let data of basicTable.data">
+      <td>{{ data.nom }}</td>
+      <td>{{ data.prenom }}</td>
+      <td>{{ data.ville }}</td>
+      <td>{{ data.email }}</td>
+      <td>{{ data.numero_telephone }}</td>
+      <td>{{ data?.activeCompte ? "Activé" : "Non activé" }}</td>
+      <td>{{ data?.isActive ? "En service" : "En pause" }}</td>
+      <td>
+        <a (click)="showDetails(data.id_livreur)" style="margin-right: 12px">
+          <span nz-icon nzType="eye" nzTheme="outline"></span>
+        </a>
+        <a (click)="updateStatusAccount(data.id_livreur,data.email,data.prenom)">
+          <span *ngIf="data?.activeCompte" nz-icon nzType="lock" nzTheme="outline"></span>
+        </a>
+        <a (click)="updateStatusAccount(data.id_livreur,'','')">
+          <span *ngIf="!data?.activeCompte" nz-icon nzType="unlock" nzTheme="outline"></span>
+        </a>
+        <ul nz-menu nzMode="horizontal">
+          <li nz-submenu nzIcon="setting">
+            <ul>
+              <li nz-menu-group>
+                <ul>
+                  <li nz-menu-item (click)="onPermis(data.id_livreur)">
+                    Permis
+                  </li>
+                  <li nz-menu-item (click)="onAssurance(data.id_livreur)">
+                    Assurance
+                  </li>
+                  <li nz-menu-item (click)="onCarteGrise(data.id_livreur)">
+                    Carte grise
+                  </li>
+                  <li nz-menu-item (click)="onCarteIdentite(data.id_livreur)">
+                    Carte d'identité
+                  </li>
+                </ul>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </td>
+    </tr>
+  </tbody>
+</nz-table>
+<nz-modal [(nzVisible)]="isVisible" nzTitle="Details livreur" nzClosable="false">
+  <ng-container *nzModalContent>
+    <div nz-row nzJustify="center">
+      <div nz-col nzSpan="11"><span class="txtSt">Nom</span></div>
+      <div nz-col nzSpan="11">
+        <span class="txtSt">{{ selectedDelivery?.nom }}</span>
+      </div>
+    </div>
+    <div nz-row nzJustify="center">
+      <div nz-col nzSpan="11"><span class="txtSt">Prenoms</span></div>
+      <div nz-col nzSpan="11">
+        <span class="txtSt">{{ selectedDelivery?.prenom }}</span>
+      </div>
+    </div>
+    <div nz-row nzJustify="center">
+      <div nz-col nzSpan="11"><span class="txtSt">Adresse</span></div>
+      <div nz-col nzSpan="11">
+        <span class="txtSt">{{ selectedDelivery?.ville }}</span>
+      </div>
+    </div>
+    <div nz-row nzJustify="center">
+      <div nz-col nzSpan="11"><span class="txtSt">E-mail</span></div>
+      <div nz-col nzSpan="11">
+        <span class="txtSt">{{ selectedDelivery?.email }}</span>
+      </div>
+    </div>
+    <div nz-row nzJustify="center">
+      <div nz-col nzSpan="11"><span class="txtSt">Telephone</span></div>
+      <div nz-col nzSpan="11">
+        <span class="txtSt">{{ selectedDelivery?.numero_telephone }}</span>
+      </div>
+    </div>
+    <div nz-row nzJustify="center">
+      <div nz-col nzSpan="11"><span class="txtSt">Statut</span></div>
+      <div nz-col nzSpan="11">
+        <span class="txtSt">{{
+          selectedDelivery?.isActive ? "En service" : "En pause"
+          }}</span>
+      </div>
+    </div>
+    <div nz-row nzJustify="center">
+      <div nz-col nzSpan="11">
+        <span class="txtSt">En cours de livraison</span>
+      </div>
+      <div nz-col nzSpan="11">
+        <span class="txtSt">{{
+          selectedDelivery?.is_cours_livraison ? "Oui" : "Non"
+          }}</span>
+      </div>
+    </div>
+  </ng-container>
+  <ng-container *nzModalFooter>
+    <button nz-button nzType="primary" (click)="handleOk()">Ok</button>
+  </ng-container>
+</nz-modal>
+
+<nz-modal [(nzVisible)]="isModal" nzClosable="false">
+  <ng-container *nzModalContent>
+    <span class="txtImgModal" *ngIf="isPermis">Image permis</span>
+    <span class="txtImgModal" *ngIf="isAssurance">Image Assurance</span>
+    <span class="txtImgModal" *ngIf="isCarteGrise">Image carte grise</span>
+    <span class="txtImgModal" *ngIf="isCarteIdentite">Image carte d'identité</span>
+    <div nz-row nzJustify="center" style="margin-left: 100px">
+      <div nz-col nzSpan="24" *ngIf="isPermis">
+        <img [src]="permisBase64Img" alt="Image Source" class="base64Img" />
+      </div>
+      <div nz-col nzSpan="24" *ngIf="isAssurance">
+        <img [src]="assuranceBase64Img" alt="Image Source" class="base64Img" />
+      </div>
+      <div nz-col nzSpan="24" *ngIf="isCarteGrise">
+        <img [src]="carteGriseBase64Img" alt="Image Source" class="base64Img" />
+      </div>
+      <div nz-col nzSpan="24" *ngIf="isCarteIdentite">
+        <img [src]="carteIdentiteBase64Img" alt="Image Source" class="base64Img" />
+      </div>
+    </div>
+  </ng-container>
+  <ng-container *nzModalFooter>
+    <button nz-button nzType="primary" (click)="onClose()">Ok</button>
+  </ng-container>
+</nz-modal>

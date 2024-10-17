@@ -1,0 +1,57 @@
+<div nz-row nzJustify="center" nzAlign='middle' class="cdr">
+    <div nz-col>
+        <nz-card class="cd-stl">
+            <form nz-form [formGroup]="validateForm" class="login-form">
+                <nz-form-item>
+                    <nz-form-control nzXs="24" nzSm="24" nzMd="24" nzLg="24" nzXl="24"
+                        nzErrorTip="Please input your username!">
+                        <nz-input-group nzAddOnBefore="+221">
+                            <input type="text" nz-input formControlName="userName" placeholder="Telephone"
+                                class="form-input" />
+                        </nz-input-group>
+                    </nz-form-control>
+                </nz-form-item>
+                <nz-form-item>
+                    <nz-form-control nzErrorTip="Please input your Password!">
+                        <nz-input-group nzPrefixIcon="lock">
+                            <input type="password" nz-input formControlName="password" placeholder="Mot de passe" />
+                        </nz-input-group>
+                    </nz-form-control>
+                </nz-form-item>
+                <button nz-button class="login-form-button" nzType="primary" (click)="submitForm()">
+                    Se connecter
+                </button>
+                <nz-divider nzText="o" style="margin-bottom: -3px;">
+                    <ng-template #text>
+                    </ng-template>
+                </nz-divider>
+                <div nz-row nzJustify="center">
+                    <div nz-col id="sign-in-button"></div>
+                </div>
+                <div nz-row nzJustify="center">
+                    <div nz-col>
+                        <a href="" (click)="show()">Mot de passe oublie</a>
+                    </div>
+                </div>
+                <div nz-row nzJustify="center">
+                    <div nz-col>
+                        <a>S'inscrire</a>
+                    </div>
+                </div>
+            </form>
+        </nz-card>
+    </div>
+</div>
+<nz-modal [nzContent]="modalContent" [nzFooter]="modalFooter" [(nzVisible)]="isVisible" nzTitle="Verification OTP"
+    (nzOnCancel)="onCancel()">
+    <ng-template #modalContent>
+        <div nz-row nzJustify="center" nzAlign="middle">
+            <div nz-col nzSpan="24">
+                <ng-otp-input (onInputChange)="onOtpChange($event)" [config]="{length:6}"></ng-otp-input>
+            </div>
+        </div>
+    </ng-template>
+    <ng-template #modalFooter>
+        <button nz-button nzType="primary" (click)="onCancel()">Annuler</button>
+    </ng-template>
+</nz-modal>

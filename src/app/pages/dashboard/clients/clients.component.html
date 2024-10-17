@@ -1,0 +1,56 @@
+<h2>
+    <span nz-icon nzType="arrow-right" nzTheme="outline"></span> Liste des clients
+</h2>
+<nz-table #basicTable [nzData]="customers">
+    <thead>
+        <tr>
+            <th>Nom</th>
+            <th>Prenom</th>
+            <th>Adresse</th>
+            <th>E-mail</th>
+            <th>Telephone</th>
+            <th>Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let data of basicTable.data">
+            <td>{{ data.nom }}</td>
+            <td>{{ data.prenom }}</td>
+            <td>{{ data.ville }}</td>
+            <td>{{ data.email }}</td>
+            <td>{{ data.numero_telephone }}</td>
+            <td>
+                <a (click)="showDetails(data.id_client)">
+                    <span>Details</span>
+                </a>
+            </td>
+        </tr>
+    </tbody>
+</nz-table>
+<nz-modal [(nzVisible)]="isVisible" nzTitle="Details client" nzClosable="false">
+    <ng-container *nzModalContent>
+        <div nz-row nzJustify="center">
+            <div nz-col nzSpan="11"><span class="txtSt">Nom</span></div>
+            <div nz-col nzSpan="11"><span class="txtSt">{{selectedCustomer?.nom}}</span></div>
+        </div>
+        <div nz-row nzJustify="center">
+            <div nz-col nzSpan="11"><span class="txtSt">Prenoms</span></div>
+            <div nz-col nzSpan="11"><span class="txtSt">{{selectedCustomer?.prenom}}</span></div>
+        </div>
+        <div nz-row nzJustify="center">
+            <div nz-col nzSpan="11"><span class="txtSt">Adresse</span></div>
+            <div nz-col nzSpan="11"><span class="txtSt">{{selectedCustomer?.ville}}</span></div>
+        </div>
+        <div nz-row nzJustify="center">
+            <div nz-col nzSpan="11"><span class="txtSt">E-mail</span></div>
+            <div nz-col nzSpan="11"><span class="txtSt">{{selectedCustomer?.email}}</span></div>
+        </div>
+        <div nz-row nzJustify="center">
+            <div nz-col nzSpan="11"><span class="txtSt">Telephone</span></div>
+            <div nz-col nzSpan="11"><span class="txtSt">{{selectedCustomer?.numero_telephone}}</span></div>
+        </div>
+    </ng-container>
+    <ng-container *nzModalFooter>
+        <button nz-button nzType="primary" (click)="handleOk()">Ok</button>
+    </ng-container>
+</nz-modal>

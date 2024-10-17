@@ -1,0 +1,81 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <a class="navbar-brand" href="#">
+      <img src="../../../assets/images/IBS_BLANC.png" alt="" style="height: 50px;width: 50;">
+    </a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+  
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item active">
+          <a class="nav-link" routerLink="/Home">Home </a>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle text-white" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Service
+          </a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+
+            <a class="dropdown-item" routerLink="/GestionProjet">Gestion des projets</a>
+
+            <a class="dropdown-item" routerLink="/dashboard">Dashboard</a>
+
+
+          </div>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link text-white" routerLink="/Contact">Contact</a>
+        </li>
+      </ul>
+      <div class="d-flex justify-content-end"> 
+        <ul class="navbar-nav mr-auto">
+        <li class="nav-item">
+        <a routerLink='/Connexion' routerLinkActive="router-link-active" class="nav-link mr-2 text-white">Connexion</a>
+        <a routerLink="/Inscription" class="nav-link text-white">S'inscrire</a>
+      </li>
+    </ul>
+      </div>
+    </div>
+  </nav>
+  <router-outlet></router-outlet>
+  
+   <!-- <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <a class="navbar-brand" href="#">
+      <img src="https://cdn.pixabay.com/photo/2017/09/01/00/15/png-2702691_640.png" alt="" style="height: 50px;width: 50;">
+    </a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+  
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item active">
+          <a class="nav-link" routerLink="/Home">Home</a>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle text-white" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Service
+          </a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <a class="dropdown-item" routerLink="/dashboard" *ngIf="isLoggedIn">Gestion des projets</a>
+            <a class="dropdown-item" routerLink="/dashboard" *ngIf="isLoggedIn">Dashboard</a>
+          </div>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link text-white" routerLink="/Contact" *ngIf="isLoggedIn">Contact</a>
+        </li>
+      </ul>
+      <div class="d-flex justify-content-end">
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item">
+            <a routerLink='/Connexion' routerLinkActive="router-link-active" class="nav-link mr-2 text-white" *ngIf="isLoggedIn">Connexion</a>
+            <a routerLink="/Inscription" class="nav-link text-white" *ngIf="isLoggedIn">S'inscrire</a>
+            <a (click)="logout()" class="nav-link text-white" *ngIf="isLoggedIn">Déconnexion</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+  <router-outlet></router-outlet> -->
+  

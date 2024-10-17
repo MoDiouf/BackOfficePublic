@@ -1,0 +1,129 @@
+<!-- <section class="text-center" style="background-color: #799fbe;">
+    <h3 class=" text-center">Contact us</h3>
+    <div class="card">
+      <div class="card-body background-color: #2c4f6c; custom-bg" >
+        <div class="row">
+          <div class="col-lg-5">
+            <iframe
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d49036.29659676156!2d-17.461075416875313!3d14.69277857102217!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xe00f77e7f3b917f%3A0x44a9cc075260ad2a!2sDakar%2C%20Senegal!5e0!3m2!1sen!2sus!4v1635087935235!5m2!1sen!2sus"
+              class="h-100 w-100" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+          </div>
+          <div class="col-lg-7">
+            <form>
+              <div class="row">
+                <div class="col-md-9">
+                  <div class="row mb-4">
+                    <div class="col-md-6 mb-4 mb-md-0">
+                      <div class="form-outline">
+                        <input type="text" id="form3Example1" class="form-control" placeholder="First name" [(ngModel)]="firstName" name="firstName" />
+                      </div>
+                    </div>
+                    <div class="col-md-6">
+                      <div class="form-outline">
+                        <input type="email" id="form3Example2" class="form-control" placeholder="Email Address" [(ngModel)]="email" name="email" />
+  
+                      </div>
+                    </div>
+                  </div>
+                  <div class="form-outline mb-4">
+                    <input type="text" id="form3Example3" class="form-control" placeholder="Subject" [(ngModel)]="subjet" name="subjet" />
+  
+                  </div>
+                  <div class="form-outline mb-4">
+                    <textarea class="form-control" id="form4Example3" rows="4" placeholder="Message" [(ngModel)]="message" name="message" ></textarea>
+                  </div>
+                  <div class="text-center text-md-start">
+                    <button type="submit" class="btn btn-primary mb-5 mb-md-0" (click)="submitForm()">
+                      Send
+                    </button>
+                  </div>
+                </div>
+                <div class="col-md-3">
+                  <ul class="list-unstyled">
+                    <li>
+                      <i class="fas fa-map-marker-alt fa-2x text-primary"></i>
+                      <p><small class="text-white">Sacré Cœur 3 Pyrotechnique Lot n° 89</small></p>
+                    </li>
+                    <li>
+                      <i class="fas fa-phone fa-2x text-primary"></i>
+                      <p><small class="text-white">+221 77 4 40 0 3 03 <br>
+                        +221 77 110 94 94</small></p>
+                    </li>
+                    <li>
+                      <i class="fas fa-envelope fa-2x text-primary"></i>
+                      <p><small class="text-white">{{email}}</small></p>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+   -->
+   <section class="text-center" style="background-color: #799fbe; margin: 20px 0;">
+    <h3 class="text-center">Contact us</h3>
+    <div class="card">
+      <div class="card-body" style="background-color: #2c4f6c;">
+        <div class="row">
+          <div class="col-lg-5">
+            <iframe
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d49036.29659676156!2d-17.461075416875313!3d14.69277857102217!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xe00f77e7f3b917f%3A0x44a9cc075260ad2a!2sDakar%2C%20Senegal!5e0!3m2!1sen!2sus!4v1635087935235!5m2!1sen!2sus"
+              class="h-100 w-100" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+          </div>
+          <div class="col-lg-7">
+            <form (ngSubmit)="submitForm()">
+              <div class="row">
+                <div class="col-md-9">
+                  <div class="row mb-4">
+                    <div class="col-md-6 mb-4 mb-md-0">
+                      <div class="form-outline">
+                        <input type="text" id="form3Example1" class="form-control" placeholder="First name" [(ngModel)]="firstName" name="firstName" required />
+                      </div>
+                    </div>
+                    <div class="col-md-6">
+                      <div class="form-outline">
+                        <input type="email" id="form3Example2" class="form-control" placeholder="Email Address" [(ngModel)]="email" name="email" required />
+                      </div>
+                    </div>
+                  </div>
+                  <div class="form-outline mb-4">
+                    <input type="text" id="form3Example3" class="form-control" placeholder="Subject" [(ngModel)]="subjet" name="subjet" required />
+                  </div>
+                  <div class="form-outline mb-4">
+                    <textarea class="form-control" id="form4Example3" rows="4" placeholder="Message" [(ngModel)]="message" name="message" required></textarea>
+                  </div>
+                  <div class="text-center text-md-start">
+                    <button type="submit" class="btn btn-primary mb-5 mb-md-0">
+                      Send
+                    </button>
+                  </div>
+                </div>
+                <div class="col-md-3">
+                  <ul class="list-unstyled">
+                    <li>
+                      <i class="fas fa-map-marker-alt fa-2x text-primary"></i>
+                      <p><small class="text-white">Sacré Cœur 3 Pyrotechnique Lot n° 89</small></p>
+                    </li>
+                    <li>
+                      <i class="fas fa-phone fa-2x text-primary"></i>
+                      <p><small class="text-white">+221 77 4 40 0 3 03 <br>
+                        +221 77 110 94 94</small></p>
+                    </li>
+                    <li>
+                      <i class="fas fa-envelope fa-2x text-primary"></i>
+                      <p><small class="text-white">{{email}}</small></p>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <app-footer-page></app-footer-page>
+  

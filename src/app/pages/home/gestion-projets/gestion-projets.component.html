@@ -1,0 +1,790 @@
+<section class="min-vh-100 bg-image">
+
+  <div class="container" id="main-container">
+
+    <!-- Navbar -->
+    <header class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0 shadow">
+      <a class="navbar-brand col-md-3 col-lg-2 me-0 px-3" href="#">Projet Name</a>
+      <button class="navbar-toggler position-absolute d-md-none collapsed" type="button" data-bs-toggle="collapse"
+        data-bs-target="#sidebarMenu" aria-controls="sidebarMenu" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <input class="form-control form-control-dark w-100" type="text" placeholder="Search" aria-label="Search">
+      <div class="navbar-nav">
+        <div class="nav-item text-nowrap">
+          <a class="nav-link px-3" routerLink="/Connexion">Sign out</a>
+        </div>
+      </div>
+    </header>
+
+    <!-- Sidebar & Main Content -->
+    <div class="container-fluid">
+      <div class="row">
+
+        <!-- Sidebar -->
+        <nav id="sidebarMenu" class="col-md-5 col-lg-2 d-md-block bg-light sidebar collapse">
+          <div class="position-sticky pt-3">
+            <ul class="nav flex-column">
+              <li class="nav-item">
+                <a class="nav-link active text-muted" aria-current="page" routerLink='/HomePage'
+                  routerLinkActive="router-link-active">
+                  Accueil
+                </a>
+              </li>
+              <li class="nav-item">
+                <a type="button" (click)="DisplayOrHiddenForm()">
+                  <span data-feather="users"></span>
+                  {{ DisplayPayement ? 'Retour' : 'Creer Projet' }}
+                </a>
+              </li>
+              <li class="nav-item">
+                <a type="button" (click)="DisplayOrHiddenAbsence()">
+                  <span data-feather="users"></span>
+                  {{ DisplayAbsence ? 'Retour' : 'Planifier le Projet' }}
+                </a>
+              </li>
+              <li class="nav-item">
+                <a type="button" (click)="DisplayOrHiddenReclation()">
+                  <span data-feather="users"></span>
+                  {{ DisplayReclation ? 'Retour' : 'Visualiser le Projet' }}
+                </a>
+              </li>
+              <li class="nav-item">
+                <a type="button" (click)="DisplayOrHiddenSupport()">
+                  <span data-feather="users"></span>
+                  {{ DisplaySupport ? 'Retour' : 'Suivi du Projet' }}
+                </a>
+              </li>
+              <li class="nav-item">
+                <a type="button">
+                  <span data-feather="users"></span>
+                  {{ false ? 'Retour' : 'Cloturer le Projet' }}
+                </a>
+              </li>
+            </ul>
+
+            <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
+              <span>Paramètres</span>
+            </h6>
+            <ul class="nav flex-column mb-2">
+              <li class="nav-item">
+                <a type="button" (click)="DisplayOrHiddenProfil()" routerLink="/ProfilPage" class="text-muted">
+                  <!-- <span data-feather="users"></span> -->
+                  {{ DisplayProfil ? 'Retour' : 'Profil' }}
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">
+                  <span data-feather="file-text"></span>
+                </a>
+              </li>
+            </ul>
+          </div>
+        </nav>
+
+        <!-- Main Content -->
+        <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
+          <div
+            class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+            <h1 class="h2">Espace du Travail</h1>
+            <div class="btn-toolbar mb-2 mb-md-0">
+              <div class="btn-group me-2">
+                <button type="button" (click)="DisplayOrHiddenNote()" class="btn btn-sm btn-outline-secondary">
+                  {{ DisplayNote ? 'Retour' : 'Note' }}
+                </button>
+                <button type="button" (click)="DisplayOrHiddenBulletin()" class="btn btn-sm btn-outline-secondary">
+                  {{ DisplayBulletin ? 'Retour' : 'Budget du Projet' }}
+                </button>
+              </div>
+              <button type="button" (click)="DisplayOrHiddenEmploi()" class="btn btn-sm btn-outline-secondary">
+                {{ DisplayEmploi ? 'Retour' : 'Emploi du temps' }}
+              </button>
+            </div>
+          </div>
+          <div id="stud" class="height:100%; w-100">
+
+            <div *ngIf="DisplayForm">
+              <div class="text">
+                Creation de Projet
+              </div>
+              <form action="#">
+                <div class="form-row">
+                  <div class="input-data">
+                    <input type="text" required>
+                    <div class="underline"></div>
+                    <label for="">First Name</label>
+                  </div>
+                  <div class="input-data">
+                    <input type="text" required>
+                    <div class="underline"></div>
+                    <label for="">Last Name</label>
+                  </div>
+                </div>
+
+                <div class="form-row">
+                  <div class="input-data">
+                    <input type="text" required>
+                    <div class="underline"></div>
+                    <label for="">Nom du project </label>
+                  </div>
+
+                  <div class="input-data">
+                    <input type="text" required>
+                    <div class="underline"></div>
+                    <label for="">Budjet</label>
+                  </div>
+                </div>
+                <div class="form-row">
+                  <div class="input-data">
+                    <input type="text" required>
+                    <div class="underline"></div>
+                    <label for="">Zone Geographique</label>
+                  </div>
+
+                  <div class="input-data">
+                    <input type="text" required>
+                    <div class="underline"></div>
+                    <label for="">Team number</label>
+                  </div>
+                </div>
+                <div class="form-row">
+                  <div class="input-data">
+                    <input type="text" required>
+                    <div class="underline"></div>
+                    <label for="">Durée projet</label>
+                  </div>
+                  <div class="input-data">
+                    <input type="file" id="imageUpload" name="image" accept="image/*">
+                    <div class="underline"></div>
+                    <label for="">Profil</label>
+                  </div>
+                </div>
+
+
+                <div class="form-row submit-btn">
+                  <div class="input-data end">
+                    <div class="inner"></div>
+                    <input type="submit" value="Ajouter">
+                  </div>
+                </div>
+              </form>
+            </div>
+            <div *ngIf="DisplayStart">
+              <img src="./../../../../assets/images/Welcom.jpg" alt="" style="width: 100%;">
+            </div>
+            <div *ngIf="DisplayReclation">
+              <section style="background-color: #eee;">
+                <div class="container py-5">
+                  <div class="row text-center text-white">
+                    <div class="col">
+                      <nav aria-label="breadcrumb" class="bg-body-tertiary rounded-3 p-3 mb-4 text-center">
+                        <ol class="breadcrumb mb-0  text-center text-white">
+                          <li class="breadcrumb-item text-center text-white"><a href="#" class="text-center">Les projets
+                              realiste sur
+                              notre plateforme</a></li>
+                        </ol>
+                      </nav>
+                    </div>
+                  </div>
+
+                  <div class="row">
+                    <div class="col-lg-4">
+                      <div class="card mb-4">
+                        <div class="card-body text-center">
+                          <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava3.webp"
+                            alt="avatar" class="rounded-circle img-fluid" style="width: 150px;">
+                          <h5 class="my-3">Cheickna Doumbia</h5>
+                          <p class="text-muted mb-1">Full Stack Developer</p>
+                          <p class="text-muted mb-4">Fass delorne, Dakar, SN</p>
+                          <p class="text-muted mb-4">Chef de projet</p>
+                          <div class="d-flex justify-content-center mb-2">
+                            <button type="button" data-mdb-button-init data-mdb-ripple-init
+                              class="btn btn-primary">Follow</button>
+                            <button type="button" data-mdb-button-init data-mdb-ripple-init
+                              class="btn btn-outline-primary ms-1">Message</button>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="card mb-4 mb-lg-0">
+                        <div class="card-body p-0">
+                          <ul class="list-group list-group-flush rounded-3">
+                            <li class="list-group-item d-flex justify-content-between align-items-center p-3">
+                              <i class="fas fa-globe fa-lg text-warning"></i>
+                              <p class="mb-0">www.fondationyougafricain.com</p>
+                            </li>
+                            <li class="list-group-item d-flex justify-content-between align-items-center p-3">
+                              <i class="fab fa-github fa-lg text-body"></i>
+                              <p class="mb-0">www.github.com</p>
+                            </li>
+                            <li class="list-group-item d-flex justify-content-between align-items-center p-3">
+                              <i class="fab fa-twitter fa-lg" style="color: #55acee;"
+                                href="https://www.facebook.com/share_channel/?link=https%3A%2F%2Fwww.guru99.com%2Ffr%2Fhow-to-find-facebook-url-of-profile-page-groups.html&app_id=966242223397117&source_surface=external_reshare&display&hashtag"></i>
+                              <p class="mb-0">www.twitter.com</p>
+                            </li>
+                            <li class="list-group-item d-flex justify-content-between align-items-center p-3">
+                              <i class="fab fa-instagram fa-lg" style="color: #ac2bac;"></i>
+                              <p class="mb-0">www.instagram.com</p>
+                            </li>
+                            <li class="list-group-item d-flex justify-content-between align-items-center p-3">
+                              <i class="fab fa-facebook-f fa-lg" style="color: #3b5998;"></i>
+                              <p class="mb-0">www.facebook.com</p>
+                            </li>
+                          </ul>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-lg-8">
+                      <div class="card mb-4">
+                        <div class="card-body">
+                          <div class="row">
+                            <div class="col-sm-3">
+                              <p class="mb-0">Nom du projet</p>
+                            </div>
+                            <div class="col-sm-9">
+                              <p class="text-muted mb-0">DROP THIAK THIAK</p>
+                            </div>
+                          </div>
+                          <hr>
+                          <div class="row">
+                            <div class="col-sm-3">
+                              <p class="mb-0">Duree du projet</p>
+                            </div>
+                            <div class="col-sm-9">
+                              <p class="text-muted mb-0">1 ans et six mois</p>
+                            </div>
+                          </div>
+                          <hr>
+                          <div class="row">
+                            <div class="col-sm-3">
+                              <p class="mb-0">Budget du projet</p>
+                            </div>
+                            <div class="col-sm-9">
+                              <p class="text-muted mb-0">20 millions</p>
+                            </div>
+                          </div>
+                          <hr>
+                          <div class="row">
+                            <div class="col-sm-3">
+                              <p class="mb-0">Nombre d'équipe</p>
+                            </div>
+                            <div class="col-sm-9">
+                              <p class="text-muted mb-0">12</p>
+                            </div>
+                          </div>
+                          <hr>
+                          <div class="row">
+                            <div class="col-sm-3">
+                              <p class="mb-0">Zone géographique</p>
+                            </div>
+                            <div class="col-sm-9">
+                              <p class="text-muted mb-0">Sénégal</p>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="row">
+                        <div class="col-md-6">
+                          <div class="card mb-4 mb-md-0">
+                            <div class="card-body">
+                              <p class="mb-4"><span class="text-primary font-italic me-1">assigment</span> project
+                                achévé
+                              </p>
+                              <p class="mb-1" style="font-size: .77rem;">Les interfaces utilisateur</p>
+                              <div class="progress rounded" style="height: 5px;">
+                                <div class="progress-bar" role="progressbar" style="width: 100%" aria-valuenow="80"
+                                  aria-valuemin="0" aria-valuemax="100"></div>
+                              </div>
+                              <p class="mt-4 mb-1" style="font-size: .77rem;">Service de passe commande </p>
+                              <div class="progress rounded" style="height: 5px;">
+                                <div class="progress-bar" role="progressbar" style="width: 72%" aria-valuenow="72"
+                                  aria-valuemin="0" aria-valuemax="100"></div>
+                              </div>
+                              <p class="mt-4 mb-1" style="font-size: .77rem;">Demande de livraison du colis</p>
+                              <div class="progress rounded" style="height: 5px;">
+                                <div class="progress-bar" role="progressbar" style="width: 89%" aria-valuenow="89"
+                                  aria-valuemin="0" aria-valuemax="100"></div>
+                              </div>
+                              <p class="mt-4 mb-1" style="font-size: .77rem;">Suivi des commandes et colis</p>
+                              <div class="progress rounded" style="height: 5px;">
+                                <div class="progress-bar" role="progressbar" style="width: 55%" aria-valuenow="55"
+                                  aria-valuemin="0" aria-valuemax="100"></div>
+                              </div>
+                              <p class="mt-4 mb-1" style="font-size: .77rem;">Chat de discussion avec le livreur</p>
+                              <div class="progress rounded mb-2" style="height: 5px;">
+                                <div class="progress-bar" role="progressbar" style="width: 66%" aria-valuenow="66"
+                                  aria-valuemin="0" aria-valuemax="100"></div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="col-md-6">
+                          <div class="card mb-4 mb-md-0">
+                            <div class="card-body">
+                              <p class="mb-4"><span class="text-primary font-italic me-1">assigment</span> en cours
+                              </p>
+                              <p class="mb-1" style="font-size: .77rem;">Le test end to end</p>
+                              <div class="progress rounded" style="height: 5px;">
+                                <div class="progress-bar" role="progressbar" style="width: 80%" aria-valuenow="80"
+                                  aria-valuemin="0" aria-valuemax="100"></div>
+                              </div>
+                              <p class="mt-4 mb-1" style="font-size: .77rem;">Integration Orange Money</p>
+                              <div class="progress rounded" style="height: 5px;">
+                                <div class="progress-bar" role="progressbar" style="width: 72%" aria-valuenow="72"
+                                  aria-valuemin="0" aria-valuemax="100"></div>
+                              </div>
+                              <p class="mt-4 mb-1" style="font-size: .77rem;">Ergonomie du code</p>
+                              <div class="progress rounded" style="height: 5px;">
+                                <div class="progress-bar" role="progressbar" style="width: 89%" aria-valuenow="89"
+                                  aria-valuemin="0" aria-valuemax="100"></div>
+                              </div>
+                              <p class="mt-4 mb-1" style="font-size: .77rem;">Mis en jour android et ios</p>
+                              <div class="progress rounded" style="height: 5px;">
+                                <div class="progress-bar" role="progressbar" style="width: 55%" aria-valuenow="55"
+                                  aria-valuemin="0" aria-valuemax="100"></div>
+                              </div>
+                              <p class="mt-4 mb-1" style="font-size: .77rem;">Suivi des activites</p>
+                              <div class="progress rounded mb-2" style="height: 5px;">
+                                <div class="progress-bar" role="progressbar" style="width: 66%" aria-valuenow="66"
+                                  aria-valuemin="0" aria-valuemax="100"></div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </section>
+              <section style="background-color: #eee;">
+                <div class="container py-5">
+
+                  <div class="row">
+                    <div class="col-lg-4">
+                      <div class="card mb-4">
+                        <div class="card-body text-center">
+                          <img src="https://th.bing.com/th/id/OIP.JFI2Xfey2oVbpOBcZbNDAAAAAA?rs=1&pid=ImgDetMain"
+                            alt="avatar" class="rounded-circle img-fluid" style="width: 150px;">
+                          <h5 class="my-3">Oumou Fily Cisse</h5>
+                          <p class="text-muted mb-1">Directrice du BNDA Mali</p>
+                          <p class="text-muted mb-4">Bamako Sénou</p>
+                          <p class="text-muted mb-4">Chef de projet</p>
+                          <div class="d-flex justify-content-center mb-2">
+                            <button type="button" data-mdb-button-init data-mdb-ripple-init
+                              class="btn btn-primary">Follow</button>
+                            <button type="button" data-mdb-button-init data-mdb-ripple-init
+                              class="btn btn-outline-primary ms-1">Message</button>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="card mb-4 mb-lg-0">
+                        <div class="card-body p-0">
+                          <ul class="list-group list-group-flush rounded-3">
+                            <li class="list-group-item d-flex justify-content-between align-items-center p-3">
+                              <i class="fas fa-globe fa-lg text-warning"></i>
+                              <p class="mb-0">www.fondationyougafricain.com</p>
+                            </li>
+                            <li class="list-group-item d-flex justify-content-between align-items-center p-3">
+                              <i class="fab fa-github fa-lg text-body"></i>
+                              <p class="mb-0">www.github.com</p>
+                            </li>
+                            <li class="list-group-item d-flex justify-content-between align-items-center p-3">
+                              <i class="fab fa-twitter fa-lg" style="color: #55acee;"
+                                href="https://www.facebook.com/share_channel/?link=https%3A%2F%2Fwww.guru99.com%2Ffr%2Fhow-to-find-facebook-url-of-profile-page-groups.html&app_id=966242223397117&source_surface=external_reshare&display&hashtag"></i>
+                              <p class="mb-0">www.twitter.com</p>
+                            </li>
+                            <li class="list-group-item d-flex justify-content-between align-items-center p-3">
+                              <i class="fab fa-instagram fa-lg" style="color: #ac2bac;"></i>
+                              <p class="mb-0">www.instagram.com</p>
+                            </li>
+                            <li class="list-group-item d-flex justify-content-between align-items-center p-3">
+                              <i class="fab fa-facebook-f fa-lg" style="color: #3b5998;"></i>
+                              <p class="mb-0">www.facebook.com</p>
+                            </li>
+                          </ul>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-lg-8">
+                      <div class="card mb-4">
+                        <div class="card-body">
+                          <div class="row">
+                            <div class="col-sm-3">
+                              <p class="mb-0">Nom du projet</p>
+                            </div>
+                            <div class="col-sm-9">
+                              <p class="text-muted mb-0">DROP IT DELIVERY</p>
+                            </div>
+                          </div>
+                          <hr>
+                          <div class="row">
+                            <div class="col-sm-3">
+                              <p class="mb-0">Duree du projet</p>
+                            </div>
+                            <div class="col-sm-9">
+                              <p class="text-muted mb-0">1 ans et six moi</p>
+                            </div>
+                          </div>
+                          <hr>
+                          <div class="row">
+                            <div class="col-sm-3">
+                              <p class="mb-0">Budget du projet</p>
+                            </div>
+                            <div class="col-sm-9">
+                              <p class="text-muted mb-0">20 millions</p>
+                            </div>
+                          </div>
+                          <hr>
+                          <div class="row">
+                            <div class="col-sm-3">
+                              <p class="mb-0">Nombre d'équipe</p>
+                            </div>
+                            <div class="col-sm-9">
+                              <p class="text-muted mb-0">12</p>
+                            </div>
+                          </div>
+                          <hr>
+                          <div class="row">
+                            <div class="col-sm-3">
+                              <p class="mb-0">Zone géographique</p>
+                            </div>
+                            <div class="col-sm-9">
+                              <p class="text-muted mb-0">Sénégal</p>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="row">
+                        <div class="col-md-6">
+                          <div class="card mb-4 mb-md-0">
+                            <div class="card-body">
+                              <p class="mb-4"><span class="text-primary font-italic me-1">Assigment</span> project
+                                achévé
+                              </p>
+                              <p class="mb-1" style="font-size: .77rem;">Reception des commandes et colis</p>
+                              <div class="progress rounded" style="height: 5px;">
+                                <div class="progress-bar" role="progressbar" style="width: 100%" aria-valuenow="80"
+                                  aria-valuemin="0" aria-valuemax="100"></div>
+                              </div>
+                              <p class="mt-4 mb-1" style="font-size: .77rem;">Effectuer la livraison de bout en bout</p>
+                              <div class="progress rounded" style="height: 5px;">
+                                <div class="progress-bar" role="progressbar" style="width: 72%" aria-valuenow="72"
+                                  aria-valuemin="0" aria-valuemax="100"></div>
+                              </div>
+                              <p class="mt-4 mb-1" style="font-size: .77rem;">Discussion avec le client lors de la
+                                livraison</p>
+                              <div class="progress rounded" style="height: 5px;">
+                                <div class="progress-bar" role="progressbar" style="width: 89%" aria-valuenow="89"
+                                  aria-valuemin="0" aria-valuemax="100"></div>
+                              </div>
+                              <p class="mt-4 mb-1" style="font-size: .77rem;">Suivi des activités</p>
+                              <div class="progress rounded" style="height: 5px;">
+                                <div class="progress-bar" role="progressbar" style="width: 55%" aria-valuenow="55"
+                                  aria-valuemin="0" aria-valuemax="100"></div>
+                              </div>
+                              <p class="mt-4 mb-1" style="font-size: .77rem;">Suivi des compte de paiment de la livraion
+                              </p>
+                              <div class="progress rounded mb-2" style="height: 5px;">
+                                <div class="progress-bar" role="progressbar" style="width: 66%" aria-valuenow="66"
+                                  aria-valuemin="0" aria-valuemax="100"></div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="col-md-6">
+                          <div class="card mb-4 mb-md-0">
+                            <div class="card-body">
+                              <p class="mb-4"><span class="text-primary font-italic me-1">Assigment</span> en cours
+                              </p>
+                              <p class="mb-1" style="font-size: .77rem;">Integration Orange Money</p>
+                              <div class="progress rounded" style="height: 5px;">
+                                <div class="progress-bar" role="progressbar" style="width: 80%" aria-valuenow="80"
+                                  aria-valuemin="0" aria-valuemax="100"></div>
+                              </div>
+                              <p class="mt-4 mb-1" style="font-size: .77rem;">Ergonomies utilisateur</p>
+                              <div class="progress rounded" style="height: 5px;">
+                                <div class="progress-bar" role="progressbar" style="width: 72%" aria-valuenow="72"
+                                  aria-valuemin="0" aria-valuemax="100"></div>
+                              </div>
+                              <p class="mt-4 mb-1" style="font-size: .77rem;">Les alerts dans toutes les parties de
+                                l'app</p>
+                              <div class="progress rounded" style="height: 5px;">
+                                <div class="progress-bar" role="progressbar" style="width: 89%" aria-valuenow="89"
+                                  aria-valuemin="0" aria-valuemax="100"></div>
+                              </div>
+                              <p class="mt-4 mb-1" style="font-size: .77rem;">Mis en jour au meme niveau android et ios
+                              </p>
+                              <div class="progress rounded" style="height: 5px;">
+                                <div class="progress-bar" role="progressbar" style="width: 55%" aria-valuenow="55"
+                                  aria-valuemin="0" aria-valuemax="100"></div>
+                              </div>
+                              <p class="mt-4 mb-1" style="font-size: .77rem;">Suivi des activités</p>
+                              <div class="progress rounded mb-2" style="height: 5px;">
+                                <div class="progress-bar" role="progressbar" style="width: 66%" aria-valuenow="66"
+                                  aria-valuemin="0" aria-valuemax="100"></div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </section>
+              <section style="background-color: #eee;">
+                <div class="container py-5">
+
+
+                  <div class="row">
+                    <div class="col-lg-4">
+                      <div class="card mb-4">
+                        <div class="card-body text-center">
+                          <img
+                            src="https://th.bing.com/th/id/R.4826a95aa5de88e55dffabaf556784c6?rik=wOPPj6ca1ac1%2bQ&riu=http%3a%2f%2fwww.hubmatrix.net%2fimages%2ftest1.png&ehk=QShlP1TtWXtr5TUyzcRasIpnw9tUfjcObigQVrBnapU%3d&risl=&pid=ImgRaw&r=0"
+                            alt="avatar" class="rounded-circle img-fluid" style="width: 150px;">
+                          <h5 class="my-3">Aminata Walet Ly</h5>
+                          <p class="text-muted mb-1">Ministre de la santé</p>
+                          <p class="text-muted mb-4">Bamako; Faladje</p>
+                          <p class="text-muted mb-4">Chef de projet</p>
+                          <div class="d-flex justify-content-center mb-2">
+                            <button type="button" data-mdb-button-init data-mdb-ripple-init
+                              class="btn btn-primary">Follow</button>
+                            <button type="button" data-mdb-button-init data-mdb-ripple-init
+                              class="btn btn-outline-primary ms-1">Message</button>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="card mb-4 mb-lg-0">
+                        <div class="card-body p-0">
+                          <ul class="list-group list-group-flush rounded-3">
+                            <li class="list-group-item d-flex justify-content-between align-items-center p-3">
+                              <i class="fas fa-globe fa-lg text-warning"></i>
+                              <p class="mb-0">www.fondationyougafricain.com</p>
+                            </li>
+                            <li class="list-group-item d-flex justify-content-between align-items-center p-3">
+                              <i class="fab fa-github fa-lg text-body"></i>
+                              <p class="mb-0">www.github.com</p>
+                            </li>
+                            <li class="list-group-item d-flex justify-content-between align-items-center p-3">
+                              <i class="fab fa-twitter fa-lg" style="color: #55acee;"
+                                href="https://www.facebook.com/share_channel/?link=https%3A%2F%2Fwww.guru99.com%2Ffr%2Fhow-to-find-facebook-url-of-profile-page-groups.html&app_id=966242223397117&source_surface=external_reshare&display&hashtag"></i>
+                              <p class="mb-0">www.twitter.com</p>
+                            </li>
+                            <li class="list-group-item d-flex justify-content-between align-items-center p-3">
+                              <i class="fab fa-instagram fa-lg" style="color: #ac2bac;"></i>
+                              <p class="mb-0">www.instagram.com</p>
+                            </li>
+                            <li class="list-group-item d-flex justify-content-between align-items-center p-3">
+                              <i class="fab fa-facebook-f fa-lg" style="color: #3b5998;"></i>
+                              <p class="mb-0">www.facebook.com</p>
+                            </li>
+                          </ul>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-lg-8">
+                      <div class="card mb-4">
+                        <div class="card-body">
+                          <div class="row">
+                            <div class="col-sm-3">
+                              <p class="mb-0">Nom du projet</p>
+                            </div>
+                            <div class="col-sm-9">
+                              <p class="text-muted mb-0">DROP IT TRADE</p>
+                            </div>
+                          </div>
+                          <hr>
+                          <div class="row">
+                            <div class="col-sm-3">
+                              <p class="mb-0">Duree du projet</p>
+                            </div>
+                            <div class="col-sm-9">
+                              <p class="text-muted mb-0">1 ans et six mois</p>
+                            </div>
+                          </div>
+                          <hr>
+                          <div class="row">
+                            <div class="col-sm-3">
+                              <p class="mb-0">Budget du projet</p>
+                            </div>
+                            <div class="col-sm-9">
+                              <p class="text-muted mb-0">20 millions</p>
+                            </div>
+                          </div>
+                          <hr>
+                          <div class="row">
+                            <div class="col-sm-3">
+                              <p class="mb-0">Nombre d'équipe</p>
+                            </div>
+                            <div class="col-sm-9">
+                              <p class="text-muted mb-0">12</p>
+                            </div>
+                          </div>
+                          <hr>
+                          <div class="row">
+                            <div class="col-sm-3">
+                              <p class="mb-0">Zone géographique</p>
+                            </div>
+                            <div class="col-sm-9">
+                              <p class="text-muted mb-0">Sénégal</p>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="row">
+                        <div class="col-md-6">
+                          <div class="card mb-4 mb-md-0">
+                            <div class="card-body">
+                              <p class="mb-4"><span class="text-primary font-italic me-1">Assigment</span> project
+                                achévé
+                              </p>
+                              <p class="mb-1" style="font-size: .77rem;">Gestion des boutiques</p>
+                              <div class="progress rounded" style="height: 5px;">
+                                <div class="progress-bar" role="progressbar" style="width: 100%" aria-valuenow="80"
+                                  aria-valuemin="0" aria-valuemax="100"></div>
+                              </div>
+                              <p class="mt-4 mb-1" style="font-size: .77rem;">Reception des commandes et validation</p>
+                              <div class="progress rounded" style="height: 5px;">
+                                <div class="progress-bar" role="progressbar" style="width: 72%" aria-valuenow="72"
+                                  aria-valuemin="0" aria-valuemax="100"></div>
+                              </div>
+                              <p class="mt-4 mb-1" style="font-size: .77rem;">Gestion des commandes</p>
+                              <div class="progress rounded" style="height: 5px;">
+                                <div class="progress-bar" role="progressbar" style="width: 89%" aria-valuenow="89"
+                                  aria-valuemin="0" aria-valuemax="100"></div>
+                              </div>
+                              <p class="mt-4 mb-1" style="font-size: .77rem;">Gestion des tickets</p>
+                              <div class="progress rounded" style="height: 5px;">
+                                <div class="progress-bar" role="progressbar" style="width: 55%" aria-valuenow="55"
+                                  aria-valuemin="0" aria-valuemax="100"></div>
+                              </div>
+                              <p class="mt-4 mb-1" style="font-size: .77rem;">Mis en jour des produits, les commandes et
+                                les tickets
+                              </p>
+                              <div class="progress rounded mb-2" style="height: 5px;">
+                                <div class="progress-bar" role="progressbar" style="width: 66%" aria-valuenow="66"
+                                  aria-valuemin="0" aria-valuemax="100"></div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="col-md-6">
+                          <div class="card mb-4 mb-md-0">
+                            <div class="card-body">
+                              <p class="mb-4"><span class="text-primary font-italic me-1">Assigment</span> en cours
+                              </p>
+                              <p class="mb-1" style="font-size: .77rem;">Ergonomie utilisateur</p>
+                              <div class="progress rounded" style="height: 5px;">
+                                <div class="progress-bar" role="progressbar" style="width: 80%" aria-valuenow="80"
+                                  aria-valuemin="0" aria-valuemax="100"></div>
+                              </div>
+                              <p class="mt-4 mb-1" style="font-size: .77rem;">Mis au même niveau de la partie android et
+                                ios</p>
+                              <div class="progress rounded" style="height: 5px;">
+                                <div class="progress-bar" role="progressbar" style="width: 72%" aria-valuenow="72"
+                                  aria-valuemin="0" aria-valuemax="100"></div>
+                              </div>
+                              <p class="mt-4 mb-1" style="font-size: .77rem;">Les alerts dans les applications</p>
+                              <div class="progress rounded" style="height: 5px;">
+                                <div class="progress-bar" role="progressbar" style="width: 89%" aria-valuenow="89"
+                                  aria-valuemin="0" aria-valuemax="100"></div>
+                              </div>
+                              <p class="mt-4 mb-1" style="font-size: .77rem;">Les panoramiques sur les ecrans</p>
+                              <div class="progress rounded" style="height: 5px;">
+                                <div class="progress-bar" role="progressbar" style="width: 55%" aria-valuenow="55"
+                                  aria-valuemin="0" aria-valuemax="100"></div>
+                              </div>
+                              <p class="mt-4 mb-1" style="font-size: .77rem;">Suivi des activités</p>
+                              <div class="progress rounded mb-2" style="height: 5px;">
+                                <div class="progress-bar" role="progressbar" style="width: 66%" aria-valuenow="66"
+                                  aria-valuemin="0" aria-valuemax="100"></div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+              </section>
+            </div>
+            <div *ngIf="DisplaySupport">
+              <div class="flex items-center  bg-gray-100 dark:bg-gray-900">
+                <div class="container mx-auto">
+                  <div class="max-w-xl   bg-white p-5 rounded-md shadow-sm">
+                    <div class="text-center">
+                      <h1 class="my-3 text-3xl font-semibold text-gray-700 dark:text-gray-200">Suivis de projet</h1>
+
+                    </div>
+                    <div class="m-7">
+                      <form  method="POST" id="form" class="needs-validation"
+                        novalidate>
+                        <input type="hidden" name="access_key" value="YOUR_ACCESS_KEY_HERE" />
+                        <input type="hidden" name="subject" value="New Submission from Web3Forms" />
+                        <input type="checkbox" name="botcheck" id="" style="display: none;" />
+
+                        <div class="flex mb-6 space-x-4">
+                          <div class="w-full md:w-1/2">
+                            <label for="fname" class="block mb-2 text-sm text-gray-600 dark:text-gray-400">Nom projet</label>
+                            <input type="text" name="name" id="first_name" placeholder="John" required
+                              class="input-field" />
+
+                          </div>
+                          <div class="w-full md:w-1/2">
+                            <label for="lname" class="block mb-2 text-sm text-gray-600 dark:text-gray-400">Last
+                              Name</label>
+                            <input type="text" name="last_name" id="lname" placeholder="Doe" required
+                              class="input-field" />
+
+                          </div>
+                        </div>
+
+                        <div class="flex mb-6 space-x-4">
+                          <div class="w-full md:w-1/2">
+                            <label for="email" class="block mb-2 text-sm text-gray-600 dark:text-gray-400">Email
+                              Address</label>
+                            <input type="email" name="email" id="email" placeholder="you@company.com" required
+                              class="input-field" />
+                            <div class="empty-feedback text-red-400 text-sm mt-1">Please provide your email address.
+                            </div>
+                            
+                          </div>
+
+                          <div class="w-full md:w-1/2">
+                            <label for="phone" class="block text-sm mb-2 text-gray-600 dark:text-gray-400">Phone
+                              Number</label>
+                            <input type="text" name="phone" id="phone" placeholder="+1 (555) 1234-567" required
+                              class="input-field" />
+                        
+                          </div>
+                        </div>
+
+                        <div class="mb-6">
+                          <label for="message" class="block mb-2 text-sm text-gray-600 dark:text-gray-400">Your
+                            Message</label>
+                          <textarea rows="5" name="message" id="message" placeholder="Your Message" class="input-field"
+                            required></textarea>
+                          <div class="empty-feedback invalid-feedback text-red-400 text-sm mt-1">Please enter your
+                            message.</div>
+                        </div>
+
+                        <div class="mb-6">
+                          <button type="submit" class="submit-btn">Send Message</button>
+                        </div>
+                        <p class="text-base text-center text-gray-400" id="result"></p>
+                      </form>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+          </div>
+
+        </main>
+      </div>
+    </div>
+  </div>
+</section>
+<app-footer-page></app-footer-page>
+<router-outlet></router-outlet>
